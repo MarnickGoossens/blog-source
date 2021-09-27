@@ -22,10 +22,7 @@ AUTHOR_FEED_RSS = None
 LINKS = (("Pelican", "https://getpelican.com/"),)
 
 # Social widget
-SOCIAL = (
-    ("You can add links in your config file", "#"),
-    ("Another social link", "#"),
-)
+SOCIAL = (("Instagram", "https://www.instagram.com/marnick.g/"),)
 
 DEFAULT_PAGINATION = 10
 
