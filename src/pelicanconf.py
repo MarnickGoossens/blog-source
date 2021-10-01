@@ -22,7 +22,11 @@ AUTHOR_FEED_RSS = None
 LINKS = (("Pelican", "https://getpelican.com/"),)
 
 # Social widget
-SOCIAL = (("Instagram", "https://www.instagram.com/marnick.g/"),)
+SOCIAL = (
+    ("Instagram", "https://www.instagram.com/marnick.g/"),
+    ("Instagram school", "https://www.instagram.com/mosart.ruimtevoortalent/"),
+    ("facebook school", "https://www.facebook.com/SGMOSART/"),
+)
 
 DEFAULT_PAGINATION = 10
 
