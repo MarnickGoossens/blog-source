@@ -1,15 +1,28 @@
 {% if DEFAULT_PAGINATION %}
 {% set first_page = articles_paginator.page(1) %}
 {% set last_page = articles_paginator.page(articles_paginator.num_pages) %}
-<p class="paginator">
+<nav class="pagination is-centered" role="navigation" aria-label="pagination">
     {% if articles_page.has_previous() %}
-        <a href="{{ SITEURL }}/{{ first_page.url }}">&#8647;</a>
-        <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">&laquo;</a>
+    <a class="pagination-previous" href="{{ SITEURL }}/{{ articles_previous_page.url }}">Vorige pagina</a>
     {% endif %}
-    Page {{ articles_page.number }} / {{ articles_paginator.num_pages }}
     {% if articles_page.has_next() %}
-        <a href="{{ SITEURL }}/{{ articles_next_page.url }}">&raquo;</a>
-        <a href="{{ SITEURL }}/{{ last_page.url }}">&#8649;</a>
+    <a class="pagination-next" href="{{ SITEURL }}/{{ articles_next_page.url }}">Volgende pagina</a>
     {% endif %}
-</p>
+    <ul class="pagination-list">
+        {% if articles_page.has_previous() %}
+        <li>
+            <a href="{{ SITEURL }}/{{ first_page.url }}" class="pagination-link">1</a>
+        </li>
+        {% endif %}
+        <li>
+            <a class="pagination-link is-current" aria-label="Page {{ articles_page.number }}" aria-current="page">{{
+                articles_page.number }}</a>
+        </li>
+        {% if articles_page.has_next() %}
+        <li>
+            <a href="{{ SITEURL }}/{{ last_page.url }}" class="pagination-link">{{articles_paginator.num_pages}}</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
 {% endif %}

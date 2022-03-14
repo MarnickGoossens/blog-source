@@ -1,58 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-    
-<section id="section">
 {% block content_title %}
 {% endblock %}
 
-    <div class="tile is-ancestor">
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-multiline">
 
-{% for article in articles_page.object_list %}
-    <div class="tile is-parent">
-      <div class="tile is-child box">
-        <h2 class="title">
-            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
-                {{ article.title }}
-            </a>
-        </h2>
-        <time class="published" datetime="{{ article.date.isoformat() }}"> {{ article.locale_date }} </time>
-        <div class="entry-content"> {{ article.summary|truncate(80) }} </div>
-      </div>
-    </div>                
-{% endfor %}
-</div>
+      {% for article in articles_page.object_list %}
+      <div class="column is-8 card mb-6 blogpost">
 
+        <div class="card-content">
+          <div class="columns">
+            <div class="column is-10 is-offset-1">
+              <h3 class="has-text-centered semibold title">{{ article.title }}</h3>
+              <p class="has-text-centered has-text-grey subtitle">
+                {{ article.author }} op {{ article.locale_date }}</p>
+            </div>
+          </div>
 
-
-{% for article in articles_page.object_list %}
-<div class="tile">
-<div class="card">
-    <div class="card-content">
-      <div class="media">
-
-        <div class="media-content">
-          <p class="title is-4">{{ article.locale_date }} </p>
-          <p class="subtitle is-6">@MarnickGoossens</p>
+          <div class="content">
+            {{ article.content }}
+          </div>
         </div>
       </div>
-  
-      <div class="content">
-        {{ article.summary|truncate(80) }} 
-        
-        <a href="#">#css</a> <a href="#">#responsive</a>
-        <br>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-      </div>
+      {% endfor %}
     </div>
   </div>
-</div>
-  {% endfor %}
 
-{% if articles_page.has_other_pages() %}
-    {% include 'pagination.html' %}
-{% endif %}
-</section><!-- /#content -->
-</div>
+  {% if articles_page.has_other_pages() %}
+  {% include 'pagination.html' %}
+  {% endif %}
+</section>
+
 {% endblock content %}
